@@ -48,15 +48,18 @@ class Core
             return;
 
         $rule_types = Yaml::parseFile($this->paths['rules']);
+
         foreach ($rule_types as $rt => $rules)
         {
             foreach ($rules as $rule)
+            {
                 self::$rules[$rule['tag']] = new Rule(
                     $rule['description'],
                     $rule['label'],
                     $rule['tag'],
                     new RuleType($rt)
                 );
+            }
         }
     }
 

@@ -52,6 +52,14 @@ class RuleType
     /**
      * @return string
      */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
     public function getRules()
     {
         return $this->rules;
@@ -66,5 +74,13 @@ class RuleType
             return true;
 
         return false;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
     }
 }

@@ -1,1 +1,9 @@
-vendor
+# Ignore all dependencies
+vendor/*
+
+# Except this one
+!vendor/choosealicense.com
+
+# Files
+composer.lock
+composer.phar

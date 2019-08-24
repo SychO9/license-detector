@@ -138,18 +138,23 @@ class License
         foreach ($data as $k => $v)
             $this->{str_replace('-', '_', $k)} = $v;
 
-        $this->setRules($data);
+        $this->fillRules($data);
     }
 
     /**
      * @return void
      */
-    public function setRules(array $data)
+    public function fillRules(array $data)
     {
-        foreach (Rule::TYPES as $rt)
+        foreach (Core::$rules as $rule)
         {
-            $rules = $data[$rt] ?? [];
-            $this->rules[$rt] = new RuleType($rt, $rules);
+            if (!isset($data[$rule->type->getName()]))
+                continue;
+
+            $this->rules[$rule->getTag()] = clone $rule;
+
+            if (isset($data[$rule->type->getName()][$rule->getTag()]))
+                $this->rules[$rule->getTag()]->setValue(true);
         }
     }
 
@@ -166,14 +171,17 @@ class License
                 continue;
 
             $this->stats['highest_match'] = $license;
-            if (($this->stats['highest_percentage'] = $percent) > 90)
+            $this->stats['highest_percentage'] = $percent;
+            if ($this->stats['highest_percentage'] > 90)
             {
                 $data = [];
                 foreach ($license as $key => $property)
                     $data[$key] = $property;
 
-                $this->stats['percentage'] = $percent;
+                unset($data['stats']);
+
                 $this->setAdvanced($data);
+                $this->stats['percentage'] = $percent;
                 break;
             }
         }
@@ -182,7 +190,7 @@ class License
     /**
      * @return string
      */
-    public function show()
+    public function printDebug()
     {
         $echo = 'Matched: ' . ($this->title ?? '<em>None</em>') . "\n";
         $echo .= 'Percentage: ' . ($this->stats['percentage'] ?? '0') . "%\n\n";
@@ -190,5 +198,13 @@ class License
         $echo .= 'Percentage: ' . ($this->stats['highest_percentage'] ?? '0') . "%";
 
         return '<pre>' . $echo . '</pre>';
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->title;
     }
 }

@@ -2,6 +2,7 @@
 /**
  * @package php-license-detector
  * @author Sami "SychO" Mazouz
+ * @version 1.0
  * @license MIT
  */
 
@@ -10,14 +11,14 @@ namespace LicenseDetector;
 use Symfony\Component\Yaml\Yaml;
 use RecursiveDirectoryIterator;
 
-class Core
+class Detector
 {
     /**
      * @var array
      */
     protected $paths = [
-        'rules' => __DIR__ . '/../../vendor/choosealicense.com/_data/rules.yml',
-        'licenses' => __DIR__ . '/../../vendor/choosealicense.com/_licenses'
+        'rules' => __DIR__ . '/../vendor/choosealicense.com/_data/rules.yml',
+        'licenses' => __DIR__ . '/../vendor/choosealicense.com/_licenses'
     ];
 
     /**
@@ -54,9 +55,9 @@ class Core
             foreach ($rules as $rule)
             {
                 self::$rules[$rule['tag']] = new Rule(
+                    $rule['tag'],
                     $rule['description'],
                     $rule['label'],
-                    $rule['tag'],
                     new RuleType($rt)
                 );
             }

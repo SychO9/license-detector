@@ -1,13 +1,27 @@
 <?php
+/**
+ * @package php-license-detector
+ * @author Sami "SychO" Mazouz
+ * @version 1.0
+ * @license MIT
+ */
 
 namespace LicenseDetector;
 
+/**
+ * Represents a rule
+ */
 class Rule
 {
     /**
      * @var array
      */
     const TYPES = ['permissions', 'conditions', 'limitations'];
+
+    /**
+     * @var string
+     */
+    protected $tag;
 
     /**
      * @var LicenseDetector\RuleType
@@ -25,23 +39,19 @@ class Rule
     protected $label;
 
     /**
-     * @var string
-     */
-    protected $tag;
-
-    /**
      * @var bool
      */
     protected $value;
 
     /**
      * Constructor
+     * @param string $tag
      */
-    public function __construct($description, $label, $tag, RuleType $type = null)
+    public function __construct(string $tag, string $description = null, string $label = null, RuleType $type = null)
     {
+        $this->tag = $tag;
         $this->description = $description;
         $this->label = $label;
-        $this->tag = $tag;
         $this->type = $type;
         $this->value = false;
     }
@@ -71,6 +81,7 @@ class Rule
     }
 
     /**
+     * @param bool $v
      * @return void
      */
     public function setValue(bool $v)

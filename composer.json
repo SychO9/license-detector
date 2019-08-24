@@ -1,16 +1,25 @@
 {
     "name": "sycho/php-license-detector",
-    "author": "Sami 'SychO' Mazouz",
     "type": "library",
     "description": "License Type Detector",
+    "authors": [
+        {
+            "name": "Sami 'SychO' Mazouz",
+            "homepage": "https://sycho9.github.io"
+        }
+    ],
+    "license": "MIT",
     "keywords": ["license", "php"],
     "homepage": "https://sycho9.github.io",
     "require": {
+        "php": ">=7.3.0",
         "symfony/yaml": "^4.3.3"
     },
     "autoload": {
         "psr-4": {
-            "LicenseDetector\\": "src/LicenseDetector"
+            "LicenseDetector\\": "license-detector"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

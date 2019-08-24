@@ -1,7 +1,16 @@
 <?php
+/**
+ * @package php-license-detector
+ * @author Sami "SychO" Mazouz
+ * @version 1.0
+ * @license MIT
+ */
 
 namespace LicenseDetector;
 
+/**
+ * Represents a type of rule; permissions, conditions or limitations.
+ */
 class RuleType
 {
     /**
@@ -16,6 +25,8 @@ class RuleType
 
     /**
      * Constructor
+     * @param string $name
+     * @param array $rules (optional)
      */
     public function __construct(string $name, array $rules = null)
     {
@@ -26,6 +37,7 @@ class RuleType
     }
 
     /**
+     * @param array $rules
      * @return void
      */
     public function fillRules(array $rules)
@@ -36,9 +48,9 @@ class RuleType
         foreach ($rules as $rule)
         {
             $r = new Rule(
+                $rule['tag'] ?? null,
                 $rule['description'] ?? null,
-                $rule['label'] ?? null,
-                $rule['tag'] ?? null
+                $rule['label'] ?? null
             );
             $r->setValue($rule['value'] ?? false);
 
@@ -66,6 +78,7 @@ class RuleType
     }
 
     /**
+     * @param LicenseDetector\RuleType $rule_type
      * @return bool
      */
     public function equals(RuleType $rule_type)

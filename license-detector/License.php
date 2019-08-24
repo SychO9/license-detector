@@ -1,9 +1,18 @@
 <?php
+/**
+ * @package php-license-detector
+ * @author Sami "SychO" Mazouz
+ * @version 1.0
+ * @license MIT
+ */
 
 namespace LicenseDetector;
 
 use Symfony\Component\Yaml\Yaml;
 
+/**
+ * Instantiates a license and matches it to the list of existing licenses
+ */
 class License
 {
     /**
@@ -73,6 +82,8 @@ class License
 
     /**
      * Constructor
+     *
+     * @param string $contents
      */
     public function __construct(string $contents)
     {
@@ -131,6 +142,7 @@ class License
     }
 
     /**
+     * @param array $data
      * @return void
      */
     public function setAdvanced(array $data)
@@ -142,6 +154,7 @@ class License
     }
 
     /**
+     * @param array $data
      * @return void
      */
     public function fillRules(array $data)

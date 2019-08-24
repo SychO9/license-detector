@@ -159,7 +159,7 @@ class License
      */
     public function fillRules(array $data)
     {
-        foreach (Core::$rules as $rule)
+        foreach (Detector::$rules as $rule)
         {
             if (!isset($data[$rule->type->getName()]))
                 continue;
@@ -176,7 +176,7 @@ class License
      */
     public function matchToLicense()
     {
-        foreach (Core::$licenses as $license)
+        foreach (Detector::$licenses as $license)
         {
             similar_text($this->getCleanBody(), $license->getCleanBody(), $percent);
 
@@ -201,16 +201,24 @@ class License
     }
 
     /**
+     * @return bool
+     */
+    public function isValid()
+    {
+        return !empty($this->title);
+    }
+
+    /**
      * @return string
      */
     public function printDebug()
     {
-        $echo = 'Matched: ' . ($this->title ?? '<em>None</em>') . "\n";
+        $echo = "\nMatched: " . ($this->title ?? '<em>None</em>') . "\n";
         $echo .= 'Percentage: ' . ($this->stats['percentage'] ?? '0') . "%\n\n";
         $echo .= 'Highest match: ' . ($this->stats['highest_match']->title ?? '<em>None</em>') . "\n";
         $echo .= 'Percentage: ' . ($this->stats['highest_percentage'] ?? '0') . "%";
 
-        return '<pre>' . $echo . '</pre>';
+        echo $echo;
     }
 
     /**

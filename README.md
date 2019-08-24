@@ -2,6 +2,7 @@
 A License information detector, inspired by [Licensee](https://github.com/licensee/licensee) and relies on data from [`choosealicense.com`](https://choosealicense.com/)
 
 ![Travis (.org) branch](https://img.shields.io/travis/SychO9/license-detector/master?style=flat-square)
+![version](https://img.shields.io/badge/version-1.0-orange.svg?style=flat-square)
 ![php](https://img.shields.io/badge/php->=7.2-red.svg?style=flat-square&color=blue)
 ![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square&color=green)
 

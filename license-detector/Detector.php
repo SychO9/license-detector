@@ -86,11 +86,19 @@ class Detector
     /**
      * @return LicenseDetector\License
      */
-    public function parseLicense($path)
+    public function parseByPath($path)
     {
         if (!file_exists($path))
             throw new \Exception('Error: LICENSE file not found.');
 
         return new License(file_get_contents($path));
+    }
+
+    /**
+     * @return LicenseDetector\License
+     */
+    public function parse(string $contents)
+    {
+        return new License($contents);
     }
 }

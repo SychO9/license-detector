@@ -1,5 +1,5 @@
 {
-    "name": "sycho/php-license-detector",
+    "name": "sycho/license-detector",
     "type": "library",
     "description": "License Type Detector",
     "authors": [

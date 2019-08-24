@@ -12,7 +12,7 @@
     "keywords": ["license", "php"],
     "homepage": "https://sycho9.github.io",
     "require": {
-        "php": ">=7.3.0",
+        "php": ">=7.1.0",
         "symfony/yaml": "^4.3.3"
     },
     "autoload": {

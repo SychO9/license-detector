@@ -8,7 +8,7 @@ A License information detector, inspired by [Licensee](https://github.com/licens
 Using Composer run the following
 
 ```gitattributes
-$ composer install sycho/license-detector
+$ composer require sycho/license-detector
 ```
 
 ## Usage

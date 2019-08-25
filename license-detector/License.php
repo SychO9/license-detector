@@ -189,7 +189,8 @@ class License
             {
                 $data = [];
                 foreach ($license as $key => $property)
-                    $data[$key] = $property;
+                    if ($key !== 'contents' && $key !== 'body')
+                        $data[$key] = $property;
 
                 unset($data['stats']);
 

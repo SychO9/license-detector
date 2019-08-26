@@ -14,7 +14,7 @@ $ composer require sycho/license-detector
 ```
 
 ## Problem
-The code uses php's `similar_text()` function to tell which license is the one used, the function is quiet expensive and takes at best one second for the results.
+The code uses php's `similar_text()` function to tell which license is the one used, the function is quiet expensive and can take up to one second for the results.
 
 ## Usage
 Using the `Detector` class's `parse()` or `parseByPath()` methods, you get a `License` object containing data about the license

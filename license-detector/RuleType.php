@@ -50,7 +50,8 @@ class RuleType
             $r = new Rule(
                 $rule['tag'] ?? null,
                 $rule['description'] ?? null,
-                $rule['label'] ?? null
+                $rule['label'] ?? null,
+                $this
             );
             $r->setValue($rule['value'] ?? false);
 
@@ -75,6 +76,14 @@ class RuleType
     public function getRules()
     {
         return $this->rules;
+    }
+
+    /**
+     * @return void
+     */
+    public function setRules(array $rules)
+    {
+        $this->rules = $rules;
     }
 
     /**

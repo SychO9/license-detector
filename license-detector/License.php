@@ -116,6 +116,19 @@ class License
     }
 
     /**
+     * @return array
+     */
+    public function getAllRules()
+    {
+        $rules = [];
+
+        foreach ($this->rules as $type)
+            $rules += $type->rules;
+
+        return $rules;
+    }
+
+    /**
      * @return void
      */
     public function parse()
@@ -159,15 +172,19 @@ class License
      */
     public function fillRules(array $data)
     {
-        foreach (Detector::$rules as $rule)
+        foreach (Rule::TYPES as $type)
         {
-            if (!isset($data[$rule->type->getName()]))
+            if (!isset($data[$type]))
                 continue;
 
-            $this->rules[$rule->getTag()] = clone $rule;
+            $this->rules[$type] = new RuleType($type);
 
-            if (isset($data[$rule->type->getName()][$rule->getTag()]))
-                $this->rules[$rule->getTag()]->setValue(true);
+            $rules = [];
+            foreach (Detector::$rules as $rule)
+                if (in_array($rule->getTag(), $data[$type]))
+                    $rules[$rule->getTag()] = $rule;
+
+            $this->rules[$type]->setRules($rules);
         }
     }
 

@@ -16,7 +16,7 @@ class Rule
     /**
      * @var array
      */
-    const TYPES = ['permissions', 'conditions', 'limitations'];
+    const TYPES = ['permissions', 'limitations', 'conditions'];
 
     /**
      * @var string

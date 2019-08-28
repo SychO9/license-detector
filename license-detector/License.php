@@ -112,7 +112,7 @@ class License
      */
     public function getCleanBody()
     {
-        return preg_replace('/\s/s', '', $this->body);
+        return substr(preg_replace('/\s/s', '', $this->body), 0, 1000);
     }
 
     /**

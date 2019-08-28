@@ -79,7 +79,8 @@ class Detector
             if (!$fileinfo->isFile())
                 continue;
 
-            self::$licenses[$fileinfo->getBasename()] = new License(file_get_contents($fileinfo->getPathname()));
+            $license = new License(file_get_contents($fileinfo->getPathname()));
+            self::$licenses[$license->spdx_id] = $license;
         }
     }
 

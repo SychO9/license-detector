@@ -108,6 +108,14 @@ class License
     }
 
     /**
+     * @return string
+     */
+    public function setBody(string $body)
+    {
+        $this->body = $body;
+    }
+
+    /**
      * @var string
      */
     public function getCleanBody()

@@ -37,4 +37,15 @@ final class DetectorTest extends TestCase
 
         $this->assertTrue($license->isValid());
     }
+
+	/**
+	 * @return void
+	 */
+	public function testLongLicense()
+	{
+		$license = $this->detector->parseByPath('tests/LICENSE.txt');
+		$license->printDebug();
+
+		$this->assertTrue($license->isValid());
+	}
 }

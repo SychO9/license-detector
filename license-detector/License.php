@@ -85,10 +85,13 @@ class License
      *
      * @param string $contents
      */
-    public function __construct(string $contents)
+    public function __construct(string $contents = null)
     {
-        $this->contents = $contents;
-        $this->parse();
+        if (!empty($contents))
+        {
+            $this->contents = $contents;
+            $this->parse();
+        }
     }
 
     /**

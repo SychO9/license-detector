@@ -80,7 +80,7 @@ class Detector
                 continue;
 
             $license = new License(file_get_contents($fileinfo->getPathname()));
-            self::$licenses[$license->spdx_id] = $license;
+            self::$licenses[strtolower($license->spdx_id)] = $license;
         }
     }
 
